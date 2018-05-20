@@ -21,5 +21,19 @@
       "plugin:react/recommended"
   ],
   "rules": {
+    "import/no-unresolved": [
+        "error",
+        {
+          "ignore": [ "@" ]
+        }
+    ],
+    "import/extensions": [
+        "error",
+        "never",
+        {
+            "js": "never",
+            "json": "always"
+        }
+    ]
   }
 }

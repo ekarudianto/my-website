@@ -1,0 +1,20 @@
+{
+    "typedOptions": {
+        "strings": [
+            "Hi !",
+            "Hallo !",
+            "Bonjour !",
+            "こんにちは !",
+            "안녕 !",
+            "Moi !",
+            "Ciao !",
+            "สวัสดี !",
+            "Hola !",
+            "嗨 !"
+        ],
+        "loop": true,
+        "typeSpeed": 100,
+        "backSpeed": 100,
+        "backDelay": 3000
+    }
+}

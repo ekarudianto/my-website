@@ -2,13 +2,14 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const WEB_TITLE = 'My website';
+const WEB_TITLE = 'Eka Rudianto | My personal website';
 
 module.exports = {
   entry: `./index.js`,
   resolve: {
     alias: {
       '@': `${__dirname}/src`,
+      'assets': `${__dirname}/assets`
     },
   },
   module: {
@@ -21,11 +22,19 @@ module.exports = {
       {
         test: /\.(css|sass|scss)$/,
         use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
+          fallback: 'style-loader',
           use: [{
-              loader: "css-loader"
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+                sourceMap: true
+              }
           }, {
-              loader: "sass-loader"
+              loader: 'sass-loader',
+              options: {
+                minimize: true,
+                sourceMap: true
+              }
           }],
         })
       },

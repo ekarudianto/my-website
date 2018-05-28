@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = merge(baseConfig, {
     module: {
@@ -36,5 +37,10 @@ module.exports = merge(baseConfig, {
         extractComments: true,
       }),
       new ExtractTextPlugin('style.css'),
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': 'production'
+        }
+      }),
     ],
 });

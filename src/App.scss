@@ -1,13 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 html {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 html, body {
     height: 100%;
+    font-size: 12px;
 }
 
-p {
-    font-size: 18px;
+.title {
+    font-size: 70px;
 }
 
 #app, .site {
@@ -50,14 +53,15 @@ p {
     align-items: stretch;
 
     .site__col {
-        width: 50%;
-        flex: 1 1 50%;
+        width: 100%;
+        flex: 1 1 100%;
         align-items: center;
         display: flex;
 
         .site__content {
             padding: 20px 30px;
-            width: 70%;
+            max-width: 700px;
+            width: 100%;
             margin: auto;
         }
     }

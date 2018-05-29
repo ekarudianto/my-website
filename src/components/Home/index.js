@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import About from '@/components/About';
-import Connect from '@/components/Connect';
+import Links from '@/components/Links';
+import Email from '@/components/Email';
 
 class Home extends Component {
   render() {
     return (
       <div className='site'>
+        <Email />
         <About />
-        <Connect />
+        <Links />
       </div>
     );
   }

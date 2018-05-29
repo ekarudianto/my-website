@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import appConfig from '@/config/appConfig.json';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import './About.scss';
 
 class About extends Component {

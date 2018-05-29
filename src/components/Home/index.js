@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import About from '@/components/About';
-import Links from '@/components/Links';
 import Email from '@/components/Email';
+import Links from '@/components/Links';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 class Home extends Component {
   render() {

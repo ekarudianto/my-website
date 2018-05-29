@@ -1,20 +1,13 @@
 {
     "typedOptions": {
         "strings": [
-            "Hi !",
-            "Hallo !",
-            "Bonjour !",
-            "こんにちは !",
-            "안녕 !",
-            "Moi !",
-            "Ciao !",
-            "สวัสดี !",
-            "Hola !",
-            "嗨 !"
+            "Hi everyone !",
+            "Welcome to my github page"
         ],
         "loop": true,
-        "typeSpeed": 100,
-        "backSpeed": 100,
-        "backDelay": 3000
+        "typeSpeed": 50,
+        "backSpeed": 50,
+        "backDelay": 3000,
+        "startDelay": 500
     }
 }

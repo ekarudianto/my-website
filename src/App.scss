@@ -74,6 +74,20 @@ html, body {
             max-width: 700px;
             padding: 20px 30px;
             width: 100%;
+
+            &::after {
+                content: '';
+                position: fixed;
+                width: 400px;
+                height: 100%;
+                background-image:url('~assets/photo.png');
+                background-repeat:no-repeat;
+                background-size:contain;
+                background-position:center;
+                top: -40px;
+                z-index: -1;
+                left: 50%;
+            }        
         }
     }
 }

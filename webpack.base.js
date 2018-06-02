@@ -17,6 +17,10 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['babel-loader', 'eslint-loader'],
       },
+      {
+        test: /\.(gif|svg|jpg|png)$/,
+        loader: 'file-loader',
+      }
     ],
   },
   output: {

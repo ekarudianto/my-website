@@ -1,0 +1,15 @@
+@import 'src/variables';
+
+.projects {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.link--state-hide {
+  color: white;
+
+  &:hover {
+    color: $link-color;
+  }
+}

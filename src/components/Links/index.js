@@ -5,7 +5,6 @@ class Links extends Component {
   render() {
     return (
       <div className='links'>
-        <a className='link' href='https://www.facebook.com/ekarudianto' rel="noopener noreferrer" target='_blank'>Facebook</a>&nbsp;&nbsp;
         <a className='link' href='https://github.com/ekarudianto' rel="noopener noreferrer" target='_blank'>Github</a>&nbsp;&nbsp;
         <a className='link' href='https://www.linkedin.com/in/ekarudianto/' rel="noopener noreferrer" target='_blank'>Linkedin</a>
       </div>

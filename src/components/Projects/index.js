@@ -7,7 +7,12 @@ export default function Projects() {
     <div className='site container'>
       <h2>My pet projects</h2>
       <ul>
-        <Link to='/forex-trading' className='link'>Forex trading formulas</Link>
+        <li>
+          <Link to='/forex-trading' className='link'>Forex trading formulas</Link>
+        </li>
+        <li>
+          <a href='/style.css'>Capital.com screener</a>
+        </li>
       </ul>
     </div>
   );

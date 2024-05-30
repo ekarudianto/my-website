@@ -16,7 +16,7 @@ declare -r DIST_DIR="${CURRENT_DIR}/dist"
 # Deployed domain
 declare -r DEPLOYED_DOMAIN="ekarudianto.github.io"
 # Remote distribution repo
-declare -r DIST_REPO="https://github.com/ekarudianto/${DEPLOYED_DOMAIN}.git"
+declare -r DIST_REPO="git@github.com:ekarudianto/${DEPLOYED_DOMAIN}.git"
 # Temporary remote repo path
 declare -r TMP_REPO_PATH="/tmp/${DEPLOYED_DOMAIN}"
 # Today date
@@ -95,7 +95,7 @@ info "Build app"
 yarn build
 
 # Check if directory/symlink already exist
-if [ -d "$TMP_REPO_PATH" ]; then 
+if [ -d "$TMP_REPO_PATH" ]; then
   if [ -L "$TMP_REPO_PATH" ]; then
     warn "Symlink detected, removing symlink"
     rm "$TMP_REPO_PATH"
@@ -110,7 +110,7 @@ info "Clone remote repo"
 
 git clone $DIST_REPO $TMP_REPO_PATH
 
-# Pull update 
+# Pull update
 info "Pull updates"
 
 cd $TMP_REPO_PATH
@@ -124,7 +124,7 @@ cp * $TMP_REPO_PATH
 cd $TMP_REPO_PATH
 
 # Check if there's no changes
-if [[ -z $(git status --porcelain) ]]; then 
+if [[ -z $(git status --porcelain) ]]; then
   warn "Nothing to commit, revert back"
   remove_tmp_dir
   exit 1;

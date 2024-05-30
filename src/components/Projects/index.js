@@ -11,7 +11,7 @@ export default function Projects() {
           <Link to='/forex-trading' className='link'>Forex trading formulas</Link>
         </li>
         <li>
-          <a href='/style.css'>Capital.com screener</a>
+          <a href='/capital-screener/index.html'>Capital.com screener</a>
         </li>
       </ul>
     </div>

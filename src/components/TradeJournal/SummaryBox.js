@@ -44,7 +44,7 @@ const SummaryBox = ({ rows }) => {
         row.gainLoss,
         row.setup,
         row.comment,
-        JSON.stringify(images),
+        images.length > 0 ? JSON.stringify(images) : '',
       ].join(',');
     }).join('|');
   };

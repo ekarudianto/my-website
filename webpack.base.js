@@ -1,9 +1,10 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 const WEB_TITLE = 'Eka Rudianto | My personal website';
 
 module.exports = {
-  mode: 'local',
+  mode: 'none',
   entry: `./index.js`,
   optimization: {
     splitChunks: {
@@ -32,11 +33,12 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: `${__dirname}/dist`,
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: 'index.html',
+      template: './index.html',
       title: WEB_TITLE,
       inject: true,
       hash: true,

@@ -13,9 +13,9 @@ render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="projects" element={<Projects />} />
-      <Route path='forex-trading' element={<ForexTrading />} />
-      <Route path='trade-journal' element={<TradeJournal />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path='/forex-trading' element={<ForexTrading />} />
+      <Route path='/trade-journal' element={<TradeJournal />} />
     </Routes>
   </BrowserRouter>
   , document.getElementById('app'));

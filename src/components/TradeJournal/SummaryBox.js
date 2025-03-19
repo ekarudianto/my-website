@@ -7,6 +7,26 @@ const SummaryBox = ({ rows }) => {
 
   const transformRows = (rows) => {
     return rows.map(row => {
+      const images = [];
+
+      if (row['1mScreenshot']) {
+        images.push({
+          label: '1m',
+          url: row['1mScreenshot'],
+        });
+      }
+
+      if (row['3mScreenshot']) {
+        images.push({
+          label: '3m',
+          url: row['3mScreenshot'],
+        });
+      }
+
+      if (row['15mScreenshot']) {
+        images.push({ label: '15m', url: row['15mScreenshot'] });
+      }
+
       return [
         row.ticker,
         row.entryDatetime.isValid() ? row.entryDatetime.format(DATE_TIME_FORMAT) : '',
@@ -23,8 +43,8 @@ const SummaryBox = ({ rows }) => {
         row.exitPrice,
         row.gainLoss,
         row.setup,
-        // row.comment,
-        // row.images,
+        row.comment,
+        JSON.stringify(images),
       ].join(',');
     }).join('|');
   };

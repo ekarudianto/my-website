@@ -1,4 +1,5 @@
 import React from "react";
+import {Tooltip} from "react-tooltip";
 import dayjs from "dayjs";
 import Input from "./Input";
 import './TradeJournal.scss'
@@ -34,7 +35,9 @@ export default function TradeJournal() {
       gainLoss: "",
       setup: "",
       comment: "",
-      images: "",
+      '1mScreenshot': "",
+      '3mScreenshot': "",
+      '15mScreenshot': "",
     };
     setRows([...rows, newRow]);
     setLastAddedRowId(newRow.id);
@@ -57,25 +60,27 @@ export default function TradeJournal() {
       <button onClick={addNewRow}>Add entry</button>
       <table className='trade-journal-table'>
         <thead>
-          <tr>
-            <td colSpan={2}>Ticker</td>
-            <td>Entry datetime</td>
-            <td>Long/Short</td>
-            <td>Lot size</td>
-            <td>4h trend</td>
-            <td>15m trend</td>
-            <td>3m trend</td>
-            <td>3m tier pricing level</td>
-            <td>Entry</td>
-            <td>Take profit</td>
-            <td>Stop loss</td>
-            <td>Exit datetime</td>
-            <td>Exit price</td>
-            <td>Gain/Loss</td>
-            <td>Setup</td>
-            <td>Comment</td>
-            <td>Images</td>
-          </tr>
+        <tr>
+          <td colSpan={2}>Ticker</td>
+          <td>Entry datetime</td>
+          <td>Long/Short</td>
+          <td>Lot size</td>
+          <td>4h trend</td>
+          <td>15m trend</td>
+          <td>3m trend</td>
+          <td>3m tier pricing level</td>
+          <td>Entry</td>
+          <td>Take profit</td>
+          <td>Stop loss</td>
+          <td>Exit datetime</td>
+          <td>Exit price</td>
+          <td>Gain/Loss</td>
+          <td data-tooltip-id="setup-tooltip">Setup</td>
+          <td>Comment</td>
+          <td>1m Screenshot</td>
+          <td>3m Screenshot</td>
+          <td>15m Screenshot</td>
+        </tr>
         </thead>
         <tbody>
         {rows.map((row) => (
@@ -216,9 +221,25 @@ export default function TradeJournal() {
             </td>
             <td>
               <Input
-                value={row.images}
+                value={row['1mScreenshot']}
                 onChange={(e) =>
-                  handleInputChange(row.id, "images", e.target.value)
+                  handleInputChange(row.id, "1mScreenshot", e.target.value)
+                }
+              />
+            </td>
+            <td>
+              <Input
+                value={row['3mScreenshot']}
+                onChange={(e) =>
+                  handleInputChange(row.id, "3mScreenshot", e.target.value)
+                }
+              />
+            </td>
+            <td>
+              <Input
+                value={row['15mScreenshot']}
+                onChange={(e) =>
+                  handleInputChange(row.id, "15mScreenshot", e.target.value)
                 }
               />
             </td>
@@ -227,7 +248,34 @@ export default function TradeJournal() {
         ))}
         </tbody>
       </table>
-      {rows.length > 0 && <SummaryBox rows={rows} />}
+      {rows.length > 0 && <SummaryBox rows={rows}/>}
+
+      {/*
+          Current setup types
+          1. Spike model
+          2. FBoS
+          3. Deeper mitigation
+          4. Tama setup
+          5. Hammer reversal
+          6. Inverted hammer reversal
+          7. NC
+          8. Other
+       */}
+      <Tooltip id="setup-tooltip">
+        <div>
+          <p>Setup type</p>
+          <ul>
+            <li>1. Spike model</li>
+            <li>2. FBoS</li>
+            <li>3. Deeper mitigation</li>
+            <li>4. Tama setup</li>
+            <li>5. Hammer reversal</li>
+            <li>6. Inverted hammer reversal</li>
+            <li>7. NC</li>
+            <li>8. Other</li>
+          </ul>
+        </div>
+      </Tooltip>
     </div>
   );
 }

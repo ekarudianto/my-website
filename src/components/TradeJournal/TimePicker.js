@@ -10,6 +10,7 @@ const TimePicker = ({ value, onChange, label }) => {
       <div>
         <DateTimePicker
           label={label || 'Date and Time'}
+          format={'DD-MM-YYYY HH:mm'}
           ampm={false}
           slotProps={
             {

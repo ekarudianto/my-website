@@ -26,9 +26,23 @@ const SummaryBox = ({ rows }) => {
     }).join('|');
   };
 
+  const copyToClipboard = () => {
+    const stringToCopy = transformRows(rows);
+    navigator.clipboard
+      .writeText(`[${stringToCopy}]`)
+      .then(() => {
+        alert("Copied to clipboard!");
+      })
+      .catch((err) => {
+        //eslint-disable-next-line no-console
+        console.error("Failed to copy: ", err);
+        alert("Failed to copy to clipboard.");
+      });
+  };
+
   return (
     <div>
-      <button>Copy text</button>
+      <button onClick={copyToClipboard}>Copy text</button>
       <br />
       <div className='string-list-container'>{transformRows(rows)}</div>
     </div>

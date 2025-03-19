@@ -3,7 +3,14 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const WEB_TITLE = 'Eka Rudianto | My personal website';
 
 module.exports = {
+  mode: 'local',
   entry: `./index.js`,
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+    },
+  },
   resolve: {
     alias: {
       '@': `${__dirname}/src`,
@@ -15,7 +22,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.(gif|svg|jpg|png)$/,

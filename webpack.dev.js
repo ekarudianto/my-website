@@ -1,11 +1,13 @@
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base');
-const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(baseConfig, {
+  mode: 'development',
   devServer: {
     overlay: true,
+    contentBase: './dist',
+    hot: true,
   },
   module: {
     rules: [
@@ -16,15 +18,13 @@ module.exports = merge(baseConfig, {
             'css-loader',
             'sass-loader'
           ]
-        }, 
+        },
     ],
   },
   plugins: [
     new BundleAnalyzerPlugin({
       analyzerMode: 'server',
       generateStatsFile: false,
-    }),
-    new webpack.DefinePlugin({
     }),
   ],
 });

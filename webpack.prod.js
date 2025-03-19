@@ -1,46 +1,38 @@
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(baseConfig, {
+  mode: 'production',
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
     module: {
         rules: [
             {
               test: /\.(css|sass|scss)$/,
-              use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: [{
-                    loader: 'css-loader',
-                    options: {
-                      minimize: true,
-                      sourceMap: false
-                    }
-                }, {
-                    loader: 'sass-loader',
-                    options: {
-                      minimize: true,
-                      sourceMap: false
-                    }
-                }],
-              })
+              use: [MiniCssExtractPlugin.loader,
+                {
+                  loader: 'css-loader',
+                  options: {
+                    sourceMap: false,
+                  },
+                },
+                {
+                  loader: 'sass-loader',
+                  options: {
+                    sourceMap: false,
+                  },
+                },
+              ],
             },
         ],
     },
     plugins: [
-      new UglifyJsPlugin({
-        test: /\.js$/,
-        cache: true,
-        sourceMap: false,
-        parallel: true,
-        extractComments: true,
-      }),
-      new ExtractTextPlugin('style.css'),
-      new webpack.DefinePlugin({
-        'process.env': {
-          'NODE_ENV': JSON.stringify('production')
-        }
+      new MiniCssExtractPlugin({
+        filename: 'styles.css',
       }),
     ],
 });

@@ -1,8 +1,10 @@
 import React from "react";
+import dayjs from "dayjs";
 import Input from "./Input";
 import './TradeJournal.scss'
 import Select from "./Select";
 import SummaryBox from "./SummaryBox";
+import TimePicker from "./TimePicker";
 
 const TREND_OPTIONS = [
   { value: "u", label: "Uptrend" },
@@ -17,7 +19,7 @@ export default function TradeJournal() {
     const newRow = {
       id: Date.now(), // Unique ID for each row
       ticker: "GOLD",
-      entryDatetime: "",
+      entryDatetime: dayjs(null),
       longShort: "",
       lotSize: "",
       trend4h: "u",
@@ -27,7 +29,7 @@ export default function TradeJournal() {
       entry: "",
       takeProfit: "",
       stopLoss: "",
-      exitDatetime: "",
+      exitDatetime: dayjs(null),
       exitPrice: "",
       gainLoss: "",
       setup: "",
@@ -92,11 +94,9 @@ export default function TradeJournal() {
               />
             </td>
             <td>
-              <Input
+              <TimePicker
                 value={row.entryDatetime}
-                onChange={(e) =>
-                  handleInputChange(row.id, "entryDatetime", e.target.value)
-                }
+                onChange={(e) => handleInputChange(row.id, "entryDatetime", e)}
               />
             </td>
             <td>
@@ -175,11 +175,9 @@ export default function TradeJournal() {
               />
             </td>
             <td>
-              <Input
+              <TimePicker
                 value={row.exitDatetime}
-                onChange={(e) =>
-                  handleInputChange(row.id, "exitDatetime", e.target.value)
-                }
+                onChange={(e) => handleInputChange(row.id, "exitDatetime", e)}
               />
             </td>
             <td>

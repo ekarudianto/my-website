@@ -13,6 +13,9 @@ export default function Projects() {
         <li>
           <a href='/capital-screener/index.html'>Capital.com screener</a>
         </li>
+        <li>
+          <Link to='/trade-journal' className='link'>Trade journal</Link>
+        </li>
       </ul>
     </div>
   );

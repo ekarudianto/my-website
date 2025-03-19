@@ -4,12 +4,12 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DateTimePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import PropTypes from "prop-types";
 
-const TimePicker = ({ value, onChange }) => {
+const TimePicker = ({ value, onChange, label }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div>
         <DateTimePicker
-          label="Basic date time picker"
+          label={label || 'Date and Time'}
           ampm={false}
           slotProps={
             {
@@ -26,6 +26,7 @@ const TimePicker = ({ value, onChange }) => {
 };
 
 TimePicker.propTypes = {
+  label: PropTypes.string,
   value: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
 };

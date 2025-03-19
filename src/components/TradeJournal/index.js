@@ -95,6 +95,7 @@ export default function TradeJournal() {
             </td>
             <td>
               <TimePicker
+                label="Entry datetime"
                 value={row.entryDatetime}
                 onChange={(e) => handleInputChange(row.id, "entryDatetime", e)}
               />
@@ -176,6 +177,7 @@ export default function TradeJournal() {
             </td>
             <td>
               <TimePicker
+                label="Exit datetime"
                 value={row.exitDatetime}
                 onChange={(e) => handleInputChange(row.id, "exitDatetime", e)}
               />

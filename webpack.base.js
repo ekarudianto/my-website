@@ -26,19 +26,24 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader'],
       },
       {
-        test: /\.(gif|svg|jpg|png)$/,
-        loader: 'file-loader',
+        test: /\.(png|jpe?g|gif|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[hash][ext]',
+        },
       }
     ],
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].[contenthash].chunk.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
   plugins: [
     new HTMLWebpackPlugin({
       template: './index.html',
+      filename: 'index.html',
       title: WEB_TITLE,
       inject: true,
       hash: true,

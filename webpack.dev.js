@@ -6,10 +6,12 @@ const path = require('path');
 module.exports = merge(baseConfig, {
   mode: 'development',
   devServer: {
-    overlay: true,
     hot: true,
-    contentBase: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     historyApiFallback: true,
+    liveReload: true,
   },
   module: {
     rules: [

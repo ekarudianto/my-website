@@ -8,30 +8,21 @@ module.exports = merge(baseConfig, {
   optimization: {
     minimizer: [new TerserPlugin()],
   },
-    module: {
-        rules: [
-            {
-              test: /\.(css|sass|scss)$/,
-              use: [MiniCssExtractPlugin.loader,
-                {
-                  loader: 'css-loader',
-                  options: {
-                    sourceMap: false,
-                  },
-                },
-                {
-                  loader: 'sass-loader',
-                  options: {
-                    sourceMap: false,
-                  },
-                },
-              ],
-            },
-        ],
-    },
-    plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'styles.css',
-      }),
-    ],
+  module: {
+      rules: [
+          {
+            test: /\.(css|sass|scss)$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              'css-loader',
+              'sass-loader',
+            ],
+          },
+      ],
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
+  ],
 });

@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Input = ({ value, onChange }) => {
+const Input = ({ value, onChange, placeholder, autoFocus, readOnly }) => {
   return (
     <div>
       <input
-        id="inputField"
+        readOnly={readOnly}
+        autoFocus={autoFocus}
         type="text"
         value={value}
         onChange={onChange}
-        placeholder="Enter text here"
+        placeholder={placeholder}
       />
     </div>
   );
@@ -18,6 +19,9 @@ const Input = ({ value, onChange }) => {
 Input.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  autoFocus: PropTypes.bool,
+  readOnly: PropTypes.bool,
 };
 
 export default Input;

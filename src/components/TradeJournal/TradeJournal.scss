@@ -1,0 +1,23 @@
+.trade-journal-table {
+  border: 1px solid;
+  margin: 10px 0;
+
+  tr {
+    &:hover {
+      background: #5d6af7;
+      color: white;
+    }
+  }
+
+  td {
+    padding: 5px;
+  }
+}
+
+.string-list-container {
+  margin-top: 10px;
+  border: 1px solid;
+  padding: 15px;
+  min-width: 300px;
+  min-height: 200px;
+}

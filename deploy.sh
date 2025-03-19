@@ -120,7 +120,7 @@ git pull origin master
 info "Copying ${DIST_DIR} folder content"
 
 cd $DIST_DIR
-cp * $TMP_REPO_PATH
+cp -r * $TMP_REPO_PATH
 cd $TMP_REPO_PATH
 
 # Check if there's no changes

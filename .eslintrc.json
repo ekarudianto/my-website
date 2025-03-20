@@ -14,13 +14,14 @@
       "browser": true,
       "node":    true,
       "mocha":   true
-  },   
+  },
   "extends": [
       "airbnb-base",
-      "eslint:recommended", 
+      "eslint:recommended",
       "plugin:react/recommended"
   ],
   "rules": {
+    "no-console": "off",
     "import/no-unresolved": [
         "error",
         {

@@ -1,31 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import './TradeJournal.scss';
+import {getCurrentMonth, getImages} from "../../utils/util";
 
 const SummaryBox = ({ rows }) => {
   const DATE_TIME_FORMAT = 'DD-MM-YYYY HH:mm';
 
   const transformRows = (rows) => {
     return rows.map(row => {
-      const images = [];
-
-      if (row['1mScreenshot']) {
-        images.push({
-          label: '1m',
-          url: row['1mScreenshot'],
-        });
-      }
-
-      if (row['3mScreenshot']) {
-        images.push({
-          label: '3m',
-          url: row['3mScreenshot'],
-        });
-      }
-
-      if (row['15mScreenshot']) {
-        images.push({ label: '15m', url: row['15mScreenshot'] });
-      }
+      const images = getImages(row);
 
       return [
         row.ticker,
@@ -63,10 +46,72 @@ const SummaryBox = ({ rows }) => {
       });
   };
 
+  const sendData = async () => {
+    const data = rows.map((row) => {
+      const {
+        ticker,
+        entryDatetime,
+        longShort,
+        entry,
+        lotSize,
+        trend4h,
+        trend15m,
+        trend3m,
+        tierPricingLevel,
+        takeProfit,
+        stopLoss,
+        exitDatetime,
+        exitPrice,
+        gainLoss,
+        setup,
+        comment
+      } = row;
+
+      return {
+        ticker,
+        entryDatetime: entryDatetime.format(DATE_TIME_FORMAT),
+        longShort,
+        entry,
+        lotSize,
+        trend4h,
+        trend15m,
+        trend3m,
+        tierPricingLevel,
+        takeProfit,
+        stopLoss,
+        exitDatetime: exitDatetime.format(DATE_TIME_FORMAT),
+        exitPrice,
+        gainLoss,
+        setup,
+        comment,
+        images: getImages(row, false),
+    }});
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwlbBrVUAh78xFCjWTsQp7F7Uk-Q8SXQRh8AR989Y64DXje9JyPsQl6ql8jH0PUwQpZrw/exec';
+
+    try {
+      const response = await fetch(`${WEB_APP_URL}?sheet=${getCurrentMonth()}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data }),
+      });
+      const result = await response.json();
+      if (result.success) {
+        alert('Data added successfully!');
+      } else {
+        throw new Error(result.error);
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error inserting data:', error);
+      alert('Failed to add data.');
+    }
+  }
+
   return (
     <div>
       <button onClick={copyToClipboard}>Copy text</button>
-      <br />
+      <button onClick={sendData}>Submit data to GSheet</button>
+      <br/>
       <div className='string-list-container'>{transformRows(rows)}</div>
     </div>
   );

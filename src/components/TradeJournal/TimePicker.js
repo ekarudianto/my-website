@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DateTimePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import PropTypes from "prop-types";
@@ -18,6 +17,7 @@ const TimePicker = ({ value, onChange, label }) => {
                 actions: ['clear', 'cancel', 'today'],
               },
             }}
+          sx={{ width: 230 }}
           value={value.isValid() ? value : null}
           onChange={onChange}
         />

@@ -9,6 +9,9 @@ const SummaryBox = ({ rows }) => {
   const transformRows = (rows) => {
     return rows.map(row => {
       const images = getImages(row);
+      const mappedImages = images.map(img => {
+        return `${img.label}:${img.url}`;
+      }).join(';');
 
       return [
         row.ticker,
@@ -27,7 +30,7 @@ const SummaryBox = ({ rows }) => {
         row.gainLoss,
         row.setup,
         row.comment,
-        images.length > 0 ? JSON.stringify(images) : '',
+        mappedImages,
       ].join(',');
     }).join('|');
   };

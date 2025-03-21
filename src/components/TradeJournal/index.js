@@ -38,6 +38,12 @@ export default function TradeJournal() {
       '1mScreenshot': "",
       '3mScreenshot': "",
       '15mScreenshot': "",
+      lostTest: false,
+      imbalance: false,
+      inducement: false,
+      badTrade: false,
+      newsImpactedTrade: false,
+      overnightFee: false,
     };
     setRows([...rows, newRow]);
     setLastAddedRowId(newRow.id);
@@ -80,6 +86,12 @@ export default function TradeJournal() {
           <td>1m Screenshot</td>
           <td>3m Screenshot</td>
           <td>15m Screenshot</td>
+          <td>Lost test?</td>
+          <td>Imbalance?</td>
+          <td>Inducement?</td>
+          <td>Bad trade?</td>
+          <td>News impacted trade?</td>
+          <td>Overnight fee?</td>
         </tr>
         </thead>
         <tbody>
@@ -242,6 +254,30 @@ export default function TradeJournal() {
                   handleInputChange(row.id, "15mScreenshot", e.target.value)
                 }
               />
+            </td>
+            <td>
+              <input type={'checkbox'} checked={row['lostTest']}
+                     onChange={() => handleInputChange(row.id, "lostTest", !row['lostTest'])}/>
+            </td>
+            <td>
+              <input type={'checkbox'} checked={row['imbalance']}
+                     onChange={() => handleInputChange(row.id, "imbalance", !row['imbalance'])}/>
+            </td>
+            <td>
+              <input type={'checkbox'} checked={row['inducement']}
+                     onChange={() => handleInputChange(row.id, "inducement", !row['inducement'])}/>
+            </td>
+            <td>
+              <input type={'checkbox'} checked={row['badTrade']}
+                     onChange={() => handleInputChange(row.id, "badTrade", !row['badTrade'])}/>
+            </td>
+            <td>
+              <input type={'checkbox'} checked={row['newsImpactedTrade']}
+                     onChange={() => handleInputChange(row.id, "newsImpactedTrade", !row['newsImpactedTrade'])}/>
+            </td>
+            <td>
+              <input type={'checkbox'} checked={row['overnightFee']}
+                     onChange={() => handleInputChange(row.id, "overnightFee", !row['overnightFee'])}/>
             </td>
 
           </tr>

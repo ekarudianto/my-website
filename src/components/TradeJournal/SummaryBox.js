@@ -31,6 +31,12 @@ const SummaryBox = ({ rows }) => {
         row.setup,
         row.comment,
         mappedImages,
+        row.lostTest,
+        row.imbalance,
+        row.inducement,
+        row.badTrade,
+        row.newsImpactedTrade,
+        row.overnightFee,
       ].join(',');
     }).join('|');
   };

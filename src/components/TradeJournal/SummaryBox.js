@@ -95,7 +95,7 @@ const SummaryBox = ({ rows }) => {
         comment,
         images: getImages(row, false),
     }});
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwlbBrVUAh78xFCjWTsQp7F7Uk-Q8SXQRh8AR989Y64DXje9JyPsQl6ql8jH0PUwQpZrw/exec';
+    const WEB_APP_URL = 'https://murmuring-earth-80569-478a80600db5.herokuapp.com/macros/s/AKfycbwlbBrVUAh78xFCjWTsQp7F7Uk-Q8SXQRh8AR989Y64DXje9JyPsQl6ql8jH0PUwQpZrw/exec';
 
     try {
       const response = await fetch(`${WEB_APP_URL}?sheet=${getCurrentMonth()}`, {

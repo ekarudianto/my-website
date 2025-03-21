@@ -119,7 +119,7 @@ const SummaryBox = ({ rows }) => {
   return (
     <div>
       <button onClick={copyToClipboard}>Copy text</button>
-      <button onClick={sendData}>Submit data to GSheet</button>
+      <button onClick={sendData} style={{marginLeft: '10px'}}>Submit data to GSheet</button>
       <br/>
       <div className='string-list-container'>{transformRows(rows)}</div>
     </div>

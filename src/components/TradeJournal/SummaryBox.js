@@ -107,8 +107,8 @@ const SummaryBox = ({ rows }) => {
         newsImpactedTrade,
         overnightFee,
     }});
-    const WEB_APP_URL = 'https://murmuring-earth-80569-478a80600db5.herokuapp.com/macros/s/AKfycby-Q_6Cmbt1dYkM3PWC1m0_-ZzTYTG62yA6yEDnMG7x2hyc-PQ0iUWbHQRLwS_gHD5FKw/exec';
-    // const WEB_APP_URL = 'http://localhost:3001/macros/s/AKfycby-Q_6Cmbt1dYkM3PWC1m0_-ZzTYTG62yA6yEDnMG7x2hyc-PQ0iUWbHQRLwS_gHD5FKw/exec';
+    const WEB_APP_URL = 'https://murmuring-earth-80569-478a80600db5.herokuapp.com/macros/s/AKfycbzYH-Ns3A8HP8E90G-QvdWeyZhqDsRRJJEMLzrL1VEkFNe_y0PhRt1i3i7kJi8_45JYnQ/exec';
+    // const WEB_APP_URL = 'http://localhost:3001/macros/s/AKfycbzYH-Ns3A8HP8E90G-QvdWeyZhqDsRRJJEMLzrL1VEkFNe_y0PhRt1i3i7kJi8_45JYnQ/exec';
 
     try {
       const response = await fetch(`${WEB_APP_URL}?sheet=${getCurrentMonth()}`, {

@@ -73,7 +73,13 @@ const SummaryBox = ({ rows }) => {
         exitPrice,
         gainLoss,
         setup,
-        comment
+        comment,
+        lostTest,
+        imbalance,
+        inducement,
+        badTrade,
+        newsImpactedTrade,
+        overnightFee,
       } = row;
 
       return {
@@ -94,6 +100,12 @@ const SummaryBox = ({ rows }) => {
         setup,
         comment,
         images: getImages(row, false),
+        lostTest,
+        imbalance,
+        inducement,
+        badTrade,
+        newsImpactedTrade,
+        overnightFee,
     }});
     const WEB_APP_URL = 'https://murmuring-earth-80569-478a80600db5.herokuapp.com/macros/s/AKfycbySIGXlhEmCmeBPrdjPs39XOLHBNOqiMAZE7Un59P7wKNUHQqT0yC8wyT56xHHn1AC3/exec';
     // const WEB_APP_URL = 'http://localhost:3001/macros/s/AKfycbySIGXlhEmCmeBPrdjPs39XOLHBNOqiMAZE7Un59P7wKNUHQqT0yC8wyT56xHHn1AC3/exec';

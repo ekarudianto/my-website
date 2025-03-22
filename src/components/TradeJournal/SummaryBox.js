@@ -107,8 +107,8 @@ const SummaryBox = ({ rows }) => {
         newsImpactedTrade,
         overnightFee,
     }});
-    const WEB_APP_URL = 'https://proxy-server-1043115498805.us-central1.run.app/macros/s/AKfycbyQCwHmKl1QuhsISuzTQr_90kGWjHuDD84OB8jK4p9AHIHd9R67m1UgTK4GdUVgAvotQQ/exec';
-    // const WEB_APP_URL = 'http://localhost:3001/macros/s/AKfycbyQCwHmKl1QuhsISuzTQr_90kGWjHuDD84OB8jK4p9AHIHd9R67m1UgTK4GdUVgAvotQQ/exec';
+    const WEB_APP_URL = 'https://proxy-server-1043115498805.us-central1.run.app/macros/s/AKfycbypsLZ1yfXL2b7aAZi6e2csRBxDghbuZ54TIKu0m_DtkokGmhw2bY5NJN8sgXMoza4oSQ/exec';
+    // const WEB_APP_URL = 'http://localhost:3001/macros/s/AKfycbypsLZ1yfXL2b7aAZi6e2csRBxDghbuZ54TIKu0m_DtkokGmhw2bY5NJN8sgXMoza4oSQ/exec';
 
     try {
       const response = await fetch(`${WEB_APP_URL}?sheet=${getCurrentMonth()}`, {

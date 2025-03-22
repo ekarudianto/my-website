@@ -12,6 +12,30 @@ const TREND_OPTIONS = [
   { value: "d", label: "Downtrend" },
 ];
 
+{/*
+    Current setup types
+    1. Spike model
+    2. FBoS
+    3. Deeper mitigation
+    4. Tama setup
+    5. Hammer reversal
+    6. Inverted hammer reversal
+    7. NC
+    8. Other
+ */}
+
+const SETUP_OPTIONS = [
+  { value: "", label: "---Choose---" },
+  { value: "1", label: "Spike model" },
+  { value: "2", label: "FBoS" },
+  { value: "3", label: "Deeper mitigation" },
+  { value: "4", label: "Tama setup" },
+  { value: "5", label: "Hammer reversal" },
+  { value: "6", label: "Inverted hammer reversal" },
+  { value: "7", label: "NC" },
+  { value: "8", label: "Other" },
+];
+
 export default function TradeJournal() {
   const [rows, setRows] = React.useState([]);
   const [lastAddedRowId, setLastAddedRowId] = React.useState(null);
@@ -66,33 +90,33 @@ export default function TradeJournal() {
       <button onClick={addNewRow}>Add entry</button>
       <table className='trade-journal-table'>
         <thead>
-        <tr>
-          <td colSpan={2}>Ticker</td>
-          <td>Entry datetime</td>
-          <td>Long/Short</td>
-          <td>Lot size</td>
-          <td>4h trend</td>
-          <td>15m trend</td>
-          <td>3m trend</td>
-          <td>3m tier pricing level</td>
-          <td>Entry</td>
-          <td>Take profit</td>
-          <td>Stop loss</td>
-          <td>Exit datetime</td>
-          <td>Exit price</td>
-          <td>Gain/Loss</td>
-          <td data-tooltip-id="setup-tooltip">Setup</td>
-          <td>Comment</td>
-          <td>1m Screenshot</td>
-          <td>3m Screenshot</td>
-          <td>15m Screenshot</td>
-          <td>Lost test?</td>
-          <td>Imbalance?</td>
-          <td>Inducement?</td>
-          <td>Bad trade?</td>
-          <td>News impacted trade?</td>
-          <td>Overnight fee?</td>
-        </tr>
+          <tr>
+            <td colSpan={2}>Ticker</td>
+            <td>Entry datetime</td>
+            <td>Long/Short</td>
+            <td>Lot size</td>
+            <td>4h trend</td>
+            <td>15m trend</td>
+            <td>3m trend</td>
+            <td>3m tier pricing level</td>
+            <td>Entry</td>
+            <td>Take profit</td>
+            <td>Stop loss</td>
+            <td>Exit datetime</td>
+            <td>Exit price</td>
+            <td>Gain/Loss</td>
+            <td data-tooltip-id="setup-tooltip">Setup</td>
+            <td>Comment</td>
+            <td>1m Screenshot</td>
+            <td>3m Screenshot</td>
+            <td>15m Screenshot</td>
+            <td>Lost test?</td>
+            <td>Imbalance?</td>
+            <td>Inducement?</td>
+            <td>Bad trade?</td>
+            <td>News impacted trade?</td>
+            <td>Overnight fee?</td>
+          </tr>
         </thead>
         <tbody>
         {rows.map((row) => (
@@ -216,11 +240,12 @@ export default function TradeJournal() {
               />
             </td>
             <td>
-              <Input
+              <Select
                 value={row.setup}
                 onChange={(e) =>
                   handleInputChange(row.id, "setup", e.target.value)
                 }
+                options={SETUP_OPTIONS}
               />
             </td>
             <td>
@@ -286,17 +311,6 @@ export default function TradeJournal() {
       </table>
       {rows.length > 0 && <SummaryBox rows={rows}/>}
 
-      {/*
-          Current setup types
-          1. Spike model
-          2. FBoS
-          3. Deeper mitigation
-          4. Tama setup
-          5. Hammer reversal
-          6. Inverted hammer reversal
-          7. NC
-          8. Other
-       */}
       <Tooltip id="setup-tooltip">
         <div>
           <p>Setup type</p>

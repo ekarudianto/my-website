@@ -107,7 +107,7 @@ const SummaryBox = ({ rows }) => {
         newsImpactedTrade,
         overnightFee,
     }});
-    const WEB_APP_URL = 'https://murmuring-earth-80569-478a80600db5.herokuapp.com/macros/s/AKfycbyQCwHmKl1QuhsISuzTQr_90kGWjHuDD84OB8jK4p9AHIHd9R67m1UgTK4GdUVgAvotQQ/exec';
+    const WEB_APP_URL = 'https://proxy-server-1043115498805.us-central1.run.app/macros/s/AKfycbyQCwHmKl1QuhsISuzTQr_90kGWjHuDD84OB8jK4p9AHIHd9R67m1UgTK4GdUVgAvotQQ/exec';
     // const WEB_APP_URL = 'http://localhost:3001/macros/s/AKfycbyQCwHmKl1QuhsISuzTQr_90kGWjHuDD84OB8jK4p9AHIHd9R67m1UgTK4GdUVgAvotQQ/exec';
 
     try {

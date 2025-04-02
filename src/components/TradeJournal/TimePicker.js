@@ -18,7 +18,7 @@ const TimePicker = ({ value, onChange, label }) => {
               },
             }}
           sx={{ width: 230 }}
-          value={value.isValid() ? value : null}
+          value={value && value.isValid() ? value : null}
           onChange={onChange}
         />
       </div>

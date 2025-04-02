@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import './TradeJournal.scss';
-import {getCurrentMonth, getImages} from "../../utils/util";
+import {getImages} from "../../utils/util";
 
 const SummaryBox = ({ rows }) => {
   const DATE_TIME_FORMAT = 'DD-MM-YYYY HH:mm';
@@ -84,7 +84,7 @@ const SummaryBox = ({ rows }) => {
 
       return {
         ticker,
-        entryDatetime: entryDatetime.format(DATE_TIME_FORMAT),
+        entryDatetime: entryDatetime.isValid() ? entryDatetime.format(DATE_TIME_FORMAT) : '',
         longShort,
         entry,
         lotSize,
@@ -94,7 +94,7 @@ const SummaryBox = ({ rows }) => {
         tierPricingLevel,
         takeProfit,
         stopLoss,
-        exitDatetime: exitDatetime.format(DATE_TIME_FORMAT),
+        exitDatetime: exitDatetime.isValid() ? exitDatetime.format(DATE_TIME_FORMAT) : '',
         exitPrice,
         gainLoss,
         setup,
@@ -107,11 +107,11 @@ const SummaryBox = ({ rows }) => {
         newsImpactedTrade,
         overnightFee,
     }});
-    const WEB_APP_URL = 'https://proxy-server-1043115498805.us-central1.run.app/macros/s/AKfycbypsLZ1yfXL2b7aAZi6e2csRBxDghbuZ54TIKu0m_DtkokGmhw2bY5NJN8sgXMoza4oSQ/exec';
-    // const WEB_APP_URL = 'http://localhost:3001/macros/s/AKfycbypsLZ1yfXL2b7aAZi6e2csRBxDghbuZ54TIKu0m_DtkokGmhw2bY5NJN8sgXMoza4oSQ/exec';
+    const WEB_APP_URL = 'https://proxy-server-1043115498805.us-central1.run.app/macros/s/AKfycbz4uJTMYQtWzOBviV1eC-hHcGxmPWdIi8_4TmMS8WVxaPg4ozQr_VfmaE7QBT3Uv6B3RA/exec';
+    // const WEB_APP_URL = 'http://localhost:3001/macros/s/AKfycbz4uJTMYQtWzOBviV1eC-hHcGxmPWdIi8_4TmMS8WVxaPg4ozQr_VfmaE7QBT3Uv6B3RA/exec';
 
     try {
-      const response = await fetch(`${WEB_APP_URL}?sheet=${getCurrentMonth()}`, {
+      const response = await fetch(`${WEB_APP_URL}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data }),

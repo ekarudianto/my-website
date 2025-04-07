@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import './TradeJournal.scss';
 import {getImages} from "../../utils/util";
 
 const SummaryBox = ({ rows }) => {
   const DATE_TIME_FORMAT = 'DD-MM-YYYY HH:mm';
+  const [isLoading, setIsLoading] = useState(false);
 
   const transformRows = (rows) => {
     return rows.map(row => {
@@ -111,6 +112,7 @@ const SummaryBox = ({ rows }) => {
     // const WEB_APP_URL = 'http://localhost:3001/macros/s/AKfycbz4uJTMYQtWzOBviV1eC-hHcGxmPWdIi8_4TmMS8WVxaPg4ozQr_VfmaE7QBT3Uv6B3RA/exec';
 
     try {
+      setIsLoading(true);
       const response = await fetch(`${WEB_APP_URL}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -122,7 +124,9 @@ const SummaryBox = ({ rows }) => {
       } else {
         throw new Error(result.error);
       }
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       // eslint-disable-next-line no-console
       console.error('Error inserting data:', error);
       alert('Failed to add data.');
@@ -132,7 +136,7 @@ const SummaryBox = ({ rows }) => {
   return (
     <div>
       <button onClick={copyToClipboard}>Copy text</button>
-      <button onClick={sendData} style={{marginLeft: '10px'}}>Submit data to GSheet</button>
+      <button onClick={sendData} disabled={isLoading} style={{marginLeft: '10px'}}>Submit data to GSheet</button>
       <br/>
       <div className='string-list-container'>{transformRows(rows)}</div>
     </div>

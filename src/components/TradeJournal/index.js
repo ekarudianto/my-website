@@ -12,6 +12,12 @@ const TREND_OPTIONS = [
   { value: "d", label: "Downtrend" },
 ];
 
+const POSITION_OPTIONS = [
+  { value: "", label: "---Choose---" },
+  { value: "l", label: "Long" },
+  { value: "s", label: "Short" },
+];
+
 {/*
     Current setup types
     1. Spike model
@@ -74,7 +80,9 @@ export default function TradeJournal() {
   };
 
   const removeRow = (id) => {
-    setRows(rows.filter((row) => row.id !== id));
+    if (confirm("You sure?") === true) {
+      setRows(rows.filter((row) => row.id !== id));
+    }
   };
 
   const handleInputChange = (id, field, value) => {
@@ -142,11 +150,12 @@ export default function TradeJournal() {
               />
             </td>
             <td>
-              <Input
+              <Select
                 value={row.longShort}
                 onChange={(e) =>
                   handleInputChange(row.id, "longShort", e.target.value)
                 }
+                options={POSITION_OPTIONS}
               />
             </td>
             <td>
